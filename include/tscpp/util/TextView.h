@@ -31,6 +31,7 @@
 #include <memory.h>
 #include <algorithm>
 #include <string>
+#include <cstring>
 #include <string_view>
 #include <limits>
 
