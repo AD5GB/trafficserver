@@ -26,6 +26,8 @@
 #include "tscpp/util/TextView.h"
 #include <cctype>
 #include <sstream>
+#include <cstdlib>
+#include <cmath>
 
 static_assert(size_t(-1) == std::string_view::npos, "TextView assumes -1 is the same as npos");
 
