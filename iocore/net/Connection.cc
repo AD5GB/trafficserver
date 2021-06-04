@@ -27,6 +27,7 @@
   Commonality across all platforms -- move out as required.
 
 **************************************************************************/
+#include <sys/socket.h>
 #include "tscore/ink_platform.h"
 #include "tscore/ink_defs.h"
 
@@ -214,7 +215,8 @@ Server::setup_fd_for_listen(bool non_blocking, const NetProcessor::AcceptOptions
   }
   REC_ReadConfigInteger(listen_per_thread, "proxy.config.exec_thread.listen");
   if (listen_per_thread == 1) {
-    if (safe_setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, SOCKOPT_ON, sizeof(int)) < 0) {
+    // RDD if (safe_setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, SOCKOPT_ON, sizeof(int)) < 0) {
+    if (safe_setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, SOCKOPT_ON, sizeof(int)) < 0) {
       goto Lerror;
     }
 #ifdef SO_REUSEPORT_LB

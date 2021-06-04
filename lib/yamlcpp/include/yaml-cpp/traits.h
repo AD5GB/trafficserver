@@ -107,9 +107,9 @@ struct disable_if : public disable_if_c<Cond::value, T> {};
 
 template <typename S, typename T>
 struct is_streamable {
-  template <typename SS, typename TT>
+  template <typename SSS, typename TTT>
   static auto test(int)
-      -> decltype(std::declval<SS&>() << std::declval<TT>(), std::true_type());
+      -> decltype(std::declval<SSS&>() << std::declval<TTT>(), std::true_type());
 
   template <typename, typename>
   static auto test(...) -> std::false_type;

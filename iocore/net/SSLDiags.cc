@@ -129,7 +129,8 @@ SSLDiagnostic(const SourceLocation &loc, bool debug, SSLNetVConnection *vc, cons
   char buf[256];
   const char *file, *data;
   int line, flags;
-  unsigned long es;
+  // RDD unsigned long es;
+  unsigned int es;
   va_list ap;
   ip_text_buffer ip_buf = {'\0'};
 
@@ -137,7 +138,8 @@ SSLDiagnostic(const SourceLocation &loc, bool debug, SSLNetVConnection *vc, cons
     ats_ip_ntop(vc->get_remote_addr(), ip_buf, sizeof(ip_buf));
   }
 
-  es = reinterpret_cast<unsigned long>(pthread_self());
+  // RDD es = reinterpret_cast<unsigned long>(pthread_self());
+  es = reinterpret_cast<unsigned int>(pthread_self());
 #ifdef HAVE_ERR_GET_ERROR_ALL
   while ((l = ERR_get_error_all(&file, &line, nullptr, &data, &flags)) != 0) {
 #else
