@@ -63,6 +63,11 @@ public:
   virtual Ptr<ProxyMutex> &get_mutex()   = 0;
   virtual ContFlags &get_control_flags() = 0;
 
+  // RDD Try to import functions from UnixNetVConnection class??
+  virtual void readReschedule(NetHandler *nh);
+  virtual void writeReschedule(NetHandler *nh);
+
+
   EventIO ep{};
   NetState read{};
   NetState write{};
